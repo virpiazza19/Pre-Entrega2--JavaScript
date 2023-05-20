@@ -34,16 +34,16 @@ function existeAlumno(dni) {
 }
 
 // Función para calcular el promedio de un alumno
-function calcularPromedio(dni) {
-    const index = buscarAlumnoPorDni(dni);
+function calcularPromedio(dniVerPromedio) {
+    const index = buscarAlumnoPorDni(dniVerPromedio);
     const alumno = Alumnos[index];
     const sumaNotas = alumno.notaPrimerExamen + alumno.notaSegundoExamen + alumno.notaTercerExamen;
     return sumaNotas / 3;
 }
 
 // Función para eliminar alumno
-function eliminarAlumno(dni) {
-    const index = buscarAlumnoPorDni(dni);
+function eliminarAlumno(dniEliminar) {
+    const index = buscarAlumnoPorDni(dniEliminar);
     if (index != -1) {
         Alumnos.splice(index, 1)
     }
@@ -72,7 +72,7 @@ while (continuar) {
 
     const nuevoAlumno = new Alumno(dni, nombre, apellido, edad, notaPrimerExamen, notaSegundoExamen, notaTercerExamen);
     Alumnos.push(nuevoAlumno);
-    console.log(`${nuevoAlumno.nombre} ${nuevoAlumno.apellido} - DNI: ${nuevoAlumno.dni} - EDAD: ${nuevoAlumno.edad} - Notas: ${nuevoAlumno.notaPrimerExamen}, ${nuevoAlumno.notaSegundoExamen}, ${nuevoAlumno.notaTercerExamen}`);
+    console.log(`Alumno nuevo: ${nuevoAlumno.nombre} ${nuevoAlumno.apellido} - DNI: ${nuevoAlumno.dni} - EDAD: ${nuevoAlumno.edad} - Notas: ${nuevoAlumno.notaPrimerExamen}, ${nuevoAlumno.notaSegundoExamen}, ${nuevoAlumno.notaTercerExamen}`);
     continuar = confirm("¿Desea agregar otro alumno?");
 };
 
@@ -96,12 +96,12 @@ Alumnos.forEach(alumno => {
 // Ciclo para actualizar notas de alumnos
 continuar = confirm("¿Desea actualizar las notas de un alumno?");
 while (continuar) {
-    const dni = parseInt(prompt(ingreseDNIdelAlumnoMensaje));
-    if (existeAlumno(dni)) {
+    const dniActualizarNotas = parseInt(prompt(ingreseDNIdelAlumnoMensaje));
+    if (existeAlumno(dniActualizarNotas)) {
         const notaPrimerExamen = parseInt(prompt("Ingrese la nota del primer examen (entre 1 y 10):"));
         const notaSegundoExamen = parseInt(prompt("Ingrese la nota del segundo examen (entre 1 y 10):"));
         const notaTercerExamen = parseInt(prompt("Ingrese la nota del tercer examen (entre 1 y 10):"));
-        const index = Alumnos.findIndex((alumno) => alumno.dni === dni)
+        const index = Alumnos.findIndex((alumno) => alumno.dni === dniActualizarNotas)
         Alumnos[index].notaPrimerExamen = notaPrimerExamen
         Alumnos[index].notaSegundoExamen = notaSegundoExamen
         Alumnos[index].notaTercerExamen = notaTercerExamen
@@ -115,12 +115,12 @@ while (continuar) {
 // Ciclo para actualizar datos de alumnos
 continuar = confirm("¿Desea actualizar los datos de un alumno?");
 while (continuar) {
-    const dni = parseInt(prompt(ingreseDNIdelAlumnoMensaje));
-    if (existeAlumno(dni)) {
+    const dniActualizarDatos = parseInt(prompt(ingreseDNIdelAlumnoMensaje));
+    if (existeAlumno(dniActualizarDatos)) {
         const nombre = prompt("Ingrese el nombre del alumno:");
         const apellido = prompt("Ingrese el apellido del alumno:");
         const edad = parseInt(prompt("Ingrese la edad del alumno:"));
-        const index = buscarAlumnoPorDni(dni);
+        const index = buscarAlumnoPorDni(dniActualizarDatos);
         Alumnos[index].nombre = nombre
         Alumnos[index].apellido = apellido
         Alumnos[index].edad = edad
@@ -134,13 +134,13 @@ while (continuar) {
 // Ciclo para calcular el promedio de alumnos
 continuar = confirm("¿Desea calcular el promedio de un alumno?");
 while (continuar) {
-    const dni = parseInt(prompt(ingreseDNIdelAlumnoMensaje));
-    if (existeAlumno(dni)) {
-        const alumno = Alumnos[buscarAlumnoPorDni(dni)];
+    const dniVerPromedio = parseInt(prompt(ingreseDNIdelAlumnoMensaje));
+    if (existeAlumno(dniVerPromedio)) {
+        const alumno = Alumnos[buscarAlumnoPorDni(dniVerPromedio)];
         const nombre = alumno.nombre;
         const apellido = alumno.apellido;
 
-        const promedio = calcularPromedio(dni);
+        const promedio = calcularPromedio(dniVerPromedio);
         if (promedio >= 7) {
             alert(`El alumno ${nombre} ${apellido} ha promocionado la materia. Su nota final es: ${promedio}`);
         } else if (promedio >= 4) {
