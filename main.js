@@ -58,7 +58,7 @@ function agregarAlumno() {
 
     const nuevoAlumno = new Alumno(dni, nombre, apellido, edad, notaPrimerExamen, notaSegundoExamen, notaTercerExamen);
     Alumnos.push(nuevoAlumno);
-    console.log(nuevoAlumno);
+    console.log(`${nuevoAlumno.nombre} ${nuevoAlumno.apellido} - DNI: ${nuevoAlumno.dni} - EDAD: ${nuevoAlumno.edad} - Notas: ${nuevoAlumno.notaPrimerExamen},${nuevoAlumno.notaSegundoExamen}, ${nuevoAlumno.notaTercerExamen}`);
 }
 
 // Función para eliminar alumno
@@ -85,7 +85,6 @@ while (continuar) {
     agregarAlumno();
     continuar = confirm("¿Desea agregar otro alumno?");
 };
-mostrarAlumnosPorConsola();
 
 // Ciclo para eliminar alumnos
 continuar = confirm("¿Desea eliminar a un alumno de la base de datos?");
@@ -119,8 +118,6 @@ while (continuar) {
     }
     continuar = confirm("¿Quiere actualizar las notas de otros alumnos?")
 };
-mostrarAlumnosPorConsola();
-
 
 // Ciclo para actualizar datos de alumnos
 continuar = confirm("¿Desea actualizar los datos de un alumno?");
@@ -140,7 +137,6 @@ while (continuar) {
     }
     continuar = confirm("¿Quiere actualizar los datos de otros alumnos?")
 };
-mostrarAlumnosPorConsola();
 
 // Ciclo para calcular el promedio de alumnos
 continuar = confirm("¿Desea calcular el promedio de un alumno?");
