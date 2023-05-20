@@ -41,14 +41,28 @@ function calcularPromedio(dni) {
     return sumaNotas / 3;
 }
 
-// Función para agregar un alumno
-function agregarAlumno() {
+// Función para eliminar alumno
+function eliminarAlumno(dni) {
+    const index = buscarAlumnoPorDni(dni);
+    if (index != -1) {
+        Alumnos.splice(index, 1)
+    }
+}
+
+// Comienza ejecución del código
+console.log("Alumnos existentes:");
+Alumnos.forEach(alumno => {
+    console.log(`${alumno.nombre} ${alumno.apellido} - DNI: ${alumno.dni} - EDAD: ${alumno.edad} - Notas: ${alumno.notaPrimerExamen},${alumno.notaSegundoExamen}, ${alumno.notaTercerExamen}`);
+});
+
+let continuar = confirm("¿Desea agregar un alumno?");
+
+// Ciclo para agregar alumnos
+while (continuar) {
     const dni = parseInt(prompt(ingreseDNIdelAlumnoMensaje));
     if (existeAlumno(dni)) {
         alert("El DNI ya se encuentra en la base de datos.");
-        return;
     }
-
     const nombre = prompt("Ingrese el nombre del alumno:");
     const apellido = prompt("Ingrese el apellido del alumno:");
     const edad = parseInt(prompt("Ingrese la edad del alumno:"));
@@ -58,31 +72,7 @@ function agregarAlumno() {
 
     const nuevoAlumno = new Alumno(dni, nombre, apellido, edad, notaPrimerExamen, notaSegundoExamen, notaTercerExamen);
     Alumnos.push(nuevoAlumno);
-    console.log(`Alumno nuevo: ${nuevoAlumno.nombre} ${nuevoAlumno.apellido} - DNI: ${nuevoAlumno.dni} - EDAD: ${nuevoAlumno.edad} - Notas: ${nuevoAlumno.notaPrimerExamen},${nuevoAlumno.notaSegundoExamen}, ${nuevoAlumno.notaTercerExamen}`);
-}
-
-// Función para eliminar alumno
-function eliminarAlumno(dni) {
-    const index = buscarAlumnoPorDni(dni);
-    if (index != -1) {
-        Alumnos.splice(index, 1)
-    }
-}
-
-// Función para mostrar por consola a los Alumnos
-function mostrarAlumnosPorConsola() {
-    console.log("Alumnos existentes:");
-    Alumnos.forEach(alumno => {
-        console.log(`${alumno.nombre} ${alumno.apellido} - DNI: ${alumno.dni} - EDAD: ${alumno.edad} - Notas: ${alumno.notaPrimerExamen},${alumno.notaSegundoExamen}, ${alumno.notaTercerExamen}`);
-    });
-}
-
-// Comienza ejecución del código
-let continuar = confirm("¿Desea agregar un alumno?");
-
-// Ciclo para agregar alumnos
-while (continuar) {
-    agregarAlumno();
+    console.log(`${nuevoAlumno.nombre} ${nuevoAlumno.apellido} - DNI: ${nuevoAlumno.dni} - EDAD: ${nuevoAlumno.edad} - Notas: ${nuevoAlumno.notaPrimerExamen}, ${nuevoAlumno.notaSegundoExamen}, ${nuevoAlumno.notaTercerExamen}`);
     continuar = confirm("¿Desea agregar otro alumno?");
 };
 
@@ -98,7 +88,10 @@ while (continuar) {
     }
     continuar = confirm("¿Quiere eliminar a un alumno?");
 };
-mostrarAlumnosPorConsola();
+console.log("Alumnos existentes:");
+Alumnos.forEach(alumno => {
+    console.log(`${alumno.nombre} ${alumno.apellido} - DNI: ${alumno.dni} - EDAD: ${alumno.edad} - Notas: ${alumno.notaPrimerExamen}, ${alumno.notaSegundoExamen}, ${alumno.notaTercerExamen}`);
+});
 
 // Ciclo para actualizar notas de alumnos
 continuar = confirm("¿Desea actualizar las notas de un alumno?");
