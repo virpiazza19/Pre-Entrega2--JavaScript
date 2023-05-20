@@ -165,4 +165,3 @@ while (continuar) {
     }
     continuar = confirm("¿Desea calcular el promedio de otro alumno?");
 }
-mostrarAlumnosPorConsola();
