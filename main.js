@@ -58,7 +58,7 @@ function agregarAlumno() {
 
     const nuevoAlumno = new Alumno(dni, nombre, apellido, edad, notaPrimerExamen, notaSegundoExamen, notaTercerExamen);
     Alumnos.push(nuevoAlumno);
-    console.log(`${nuevoAlumno.nombre} ${nuevoAlumno.apellido} - DNI: ${nuevoAlumno.dni} - EDAD: ${nuevoAlumno.edad} - Notas: ${nuevoAlumno.notaPrimerExamen},${nuevoAlumno.notaSegundoExamen}, ${nuevoAlumno.notaTercerExamen}`);
+    console.log(`Alumno nuevo: ${nuevoAlumno.nombre} ${nuevoAlumno.apellido} - DNI: ${nuevoAlumno.dni} - EDAD: ${nuevoAlumno.edad} - Notas: ${nuevoAlumno.notaPrimerExamen},${nuevoAlumno.notaSegundoExamen}, ${nuevoAlumno.notaTercerExamen}`);
 }
 
 // Función para eliminar alumno
