@@ -73,7 +73,7 @@ function eliminarAlumno(dni) {
 function mostrarAlumnosPorConsola() {
     console.log("Alumnos existentes:");
     Alumnos.forEach(alumno => {
-        console.log(`${alumno.nombre} ${alumno.apellido} - DNI: ${alumno.dni} - EDAD: ${alumno.edad}`);
+        console.log(`${alumno.nombre} ${alumno.apellido} - DNI: ${alumno.dni} - EDAD: ${alumno.edad} - Notas: ${alumno.notaPrimerExamen},${alumno.notaSegundoExamen}, ${alumno.notaTercerExamen}`);
     });
 }
 
